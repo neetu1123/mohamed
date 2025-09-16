@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -48,7 +48,7 @@
     }
 
     .main-header.scrolled {
-      background-color: var(--deep-blue);
+      background-color: #000000;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
 
@@ -78,9 +78,9 @@
       letter-spacing: 0.5px;
     }
 
-    /* Change nav link color to dark when header has background */
+    /* Change nav link color to white when header is scrolled */
     .main-header.scrolled .navbar-nav .nav-link {
-      color: var(--text-white);
+      color: #ffffff;
     }
 
     .navbar-nav .nav-link:after {
@@ -112,7 +112,7 @@
     .navbar-nav .nav-link:hover,
     .navbar-nav .nav-link.active,
     .navbar-nav .nav-link[data-path="{{ url()->current() }}"] {
-      color: var(--accent-color-color);
+      color: var(--accent-color);
     }
 
     /* Hover/active state when header has background */
@@ -207,7 +207,7 @@
       top: 78px;
       left: 0;
       width: 100%;
-      background: var(--dark-bg);
+      background: #000000;
       z-index: 50;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
       border-top: 2px solid var(--accent-color);
