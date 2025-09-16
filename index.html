@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-     <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -23,489 +23,710 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Dynalight&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oranienbaum&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Gilda+Display&display=swap"
       rel="stylesheet"
     />
-</head>
-<style>
+  </head>
+  <style>
+    /* CSS Variables for Theme Colors */
+    :root {
+      --dark-bg: #222222;
+      --accent-color: #ab8a62;
+      --text-white: #ffffff;
+      --text-light-bg: rgba(255, 255, 255, 0.5);
+      --text-dark: #333333;
+
+      /* Fonts */
+      --heading-font: "Gilda Display", serif;
+      --body-font: "Barlow", sans-serif;
+
+      /* Existing Variables */
+      --sunset-gold: #ab8a62;
+      --deep-blue: #222222;
+      --white: #ffffff;
+      --text-light: #ffffff;
+      --background-light: #f8f9fa;
+      --grey-dark: rgba(255, 255, 255, 0.8);
+      --medium-blue: #ab8a62;
+      --gold: #ab8a62;
+    }
+
+    /* Global Styles */
+    body {
+      font-family: var(--body-font);
+      color: var(--text-dark);
+      background-color: var(--dark-bg);
+      line-height: 1.6;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: var(--heading-font);
+      color: var(--text-white);
+      font-weight: 400;
+    }
+
+    p {
+      font-family: var(--body-font);
+      color: var(--text-light-bg);
+      line-height: 1.8;
+    }
+
     /* hero */
-	.hero-section {
-		background: url('/home/guest/Documents/WebdesignStr/mohamed/WhatsApp Image 2025-08-07 at 7.39.57 PM.jpeg') no-repeat center center;
-        /* For creating a darker overlay to match the image */
-        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('{{ asset($data->owner_image)}}');
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        position: relative;
-        display: flex;
-        align-items: flex-end; /* This positions content at the bottom */
-        justify-content: center;
-        text-align: center;
-        color: var(--text-light);
-        z-index: 1;
-        padding: 0 0 80px; /* Reduced bottom padding to position content closer to bottom */
-        overflow: hidden;
-        min-height: 70%;
-	}
-    
+    .hero-section {
+      background: url("/WhatsApp Image 2025-08-07 at 7.39.57 PM.jpeg") no-repeat
+        center center;
+      /* For creating a darker overlay to match the image */
+      /* background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)); */
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end; /* This positions content at the bottom */
+      justify-content: center;
+      text-align: center;
+      color: var(--text-light);
+      z-index: 1;
+      padding: 0 0 80px; /* Reduced bottom padding to position content closer to bottom */
+      overflow: hidden;
+      min-height: 70%;
+    }
+
     .scroll-indicator {
-        position: absolute;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 2;
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
     }
-    
+
     .scroll-down {
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      position: relative;
     }
-    
+
     .scroll-arrow {
-        display: block;
-        width: 20px;
-        height: 20px;
-        border-right: 3px solid var(--text-light);
-        border-bottom: 3px solid var(--text-light);
-        transform: rotate(45deg);
-        margin: 0 auto;
-        animation: scroll-down 2s infinite;
+      display: block;
+      width: 20px;
+      height: 20px;
+      border-right: 3px solid var(--text-light);
+      border-bottom: 3px solid var(--text-light);
+      transform: rotate(45deg);
+      margin: 0 auto;
+      animation: scroll-down 2s infinite;
     }
-    
+
     @keyframes scroll-down {
-        0% {
-            transform: rotate(45deg) translate(0, 0);
-            opacity: 0.4;
-        }
-        50% {
-            transform: rotate(45deg) translate(10px, 10px);
-            opacity: 1;
-        }
-        100% {
-            transform: rotate(45deg) translate(0, 0);
-            opacity: 0.4;
-        }
+      0% {
+        transform: rotate(45deg) translate(0, 0);
+        opacity: 0.4;
+      }
+      50% {
+        transform: rotate(45deg) translate(10px, 10px);
+        opacity: 1;
+      }
+      100% {
+        transform: rotate(45deg) translate(0, 0);
+        opacity: 0.4;
+      }
     }
-    
+
     .main-btn {
-        background-color: var(--sunset-gold);
-        color: var(--text-dark);
-        border: none;
-        border-radius: 800px;
-        font-family: var(--body-font);
-        font-weight: 600;
-        transition: all 0.3s ease;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-        
+      background-color: var(--accent-color);
+      color: var(--text-white);
+      border: none;
+      border-radius: 800px;
+      font-family: var(--body-font);
+      font-weight: 600;
+      transition: all 0.3s ease;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
-    
+
     .main-btn:hover {
-        background-color: var(--deep-blue);
-        color: var(--text-light);
-        transform: translateY(-3px);
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        text-decoration: none;
+      background-color: var(--dark-bg);
+      color: var(--text-white);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      text-decoration: none;
     }
-  @media (max-width: 767px) {
-      	.hero-section {
-      	    	background: url('/WhatsApp Image 2025-08-07 at 7.39.57 PM.jpeg') no-repeat center center;
-      	    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 50vh !important;
-    min-height: 50%;
-      	}
-  }
-  .banner-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
-        }
-        
-        .banner-content {
-            position: relative;
-            text-align: center;
-            width: 100%;
-            color: var(--text-light);
-            z-index: 1;
-            padding: 0 80px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .banner-content h1 {
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-            margin-bottom: 1.5rem;
-        }
-        
-        .banner-content p {
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-            margin-bottom: 2rem;
-        }
-        
-        @media (max-width: 767px) {
-            .banner-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .banner-content p {
-                font-size: 1rem;
-            }
-            
-            .scroll-indicator {
-                bottom: 15px;
-            }
-            
-            .scroll-arrow {
-                width: 15px;
-                height: 15px;
-                border-width: 2px;
-            }
-        }
+    @media (max-width: 767px) {
+      .hero-section {
+        background: url("/WhatsApp Image 2025-08-07 at 7.39.57 PM.jpeg")
+          no-repeat center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 50vh !important;
+        min-height: 50%;
+      }
+    }
+    .banner-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+    }
+
+    .banner-content {
+      position: relative;
+      text-align: center;
+      width: 100%;
+      color: var(--text-light);
+      z-index: 1;
+      padding: 0 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .banner-content h1 {
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-family: var(--heading-font);
+    }
+
+    .banner-content p {
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 767px) {
+      .banner-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .banner-content p {
+        font-size: 1rem;
+      }
+
+      .scroll-indicator {
+        bottom: 15px;
+      }
+
+      .scroll-arrow {
+        width: 15px;
+        height: 15px;
+        border-width: 2px;
+      }
+    }
+    /* Enhanced Search Bar Styles */
+    .search-container {
+      width: 100%;
+      max-width: 1000px;
+      margin: 2rem auto 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .search-bar {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 100px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(171, 138, 98, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .search-bar:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .search-group {
+      flex: 1;
+      position: relative;
+      padding: 20px 5px;
+    }
+
+    .search-group:last-child {
+      flex: 0 0 auto;
+      padding: 10px 15px 10px 20px;
+    }
+
+    .search-input-wrap {
+      display: flex;
+      align-items: center;
+      padding: 0 15px;
+    }
+
+    .search-icon {
+      margin-right: 12px;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-icon .iconify {
+      color: var(--accent-color);
+      font-size: 24px;
+    }
+
+    .search-select {
+      border: none;
+      background: transparent;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--dark-bg);
+      width: 100%;
+      padding: 5px 0;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      outline: none;
+      cursor: pointer;
+      font-family: var(--body-font);
+    }
+
+    .search-select:focus {
+      box-shadow: none;
+    }
+
+    .search-divider {
+      height: 40px;
+      width: 1px;
+      background-color: rgba(171, 138, 98, 0.3);
+    }
+
+    .search-button {
+      background: var(--accent-color);
+      color: var(--text-white);
+      border: none;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 15px 50px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      box-shadow: 0 4px 15px rgba(34, 34, 34, 0.25);
+      font-family: var(--body-font);
+    }
+
+    .search-button:hover {
+      background: var(--dark-bg);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(34, 34, 34, 0.35);
+    }
+
+    .search-button .iconify {
+      font-size: 20px;
+    }
+
+    @media (max-width: 992px) {
+      .search-bar {
+        flex-wrap: wrap;
+      }
+
+      .search-group {
+        flex: 1 0 40%;
+      }
+
+      .search-group:last-child {
+        flex: 1 0 100%;
+        justify-content: center;
+        display: flex;
+        padding: 15px;
+      }
+
+      .search-divider {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .search-group {
+        flex: 1 0 100%;
+        padding: 15px 20px;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .search-button {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .search-container {
+        padding: 0 10px;
+      }
+
+      .search-bar {
+        border-radius: 8px;
+      }
+    }
+
     /* about Section */
-        .about-section {
-          
-            /*display: flex;*/
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-           
-        }
+    .about-section {
+      /*display: flex;*/
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--dark-bg);
+      color: var(--text-white);
+    }
 
-        .about-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 1;
-        }
+    .about-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
 
-        .about-content {
-            position: relative;
-            z-index: 2;
-           
-        }
+    .about-content {
+      position: relative;
+      z-index: 2;
+    }
 
-        .about-title {
-            font-size: 2rem;
-            font-weight: 300;
-            line-height: 1.2;
-            margin-bottom: 2rem;
-            letter-spacing: 1px;
-        }
+    .about-title {
+      font-size: 2rem;
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 2rem;
+      letter-spacing: 1px;
+      font-family: var(--heading-font);
+      color: var(--text-white);
+    }
 
-        .about-underline {
-            width: 80px;
-            height: 2px;
-            background: #d4af37;
-            margin: 2rem 0;
-        }
+    .about-underline {
+      width: 80px;
+      height: 2px;
+      background: var(--accent-color);
+      margin: 2rem 0;
+    }
 
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-        .about-text p {
-            text-align: center;
-        }
+    .about-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      font-family: var(--body-font);
+      color: var(--text-light-bg);
+    }
+    .about-text p {
+      text-align: center;
+    }
 
-        .mountain-image {
-            border-radius: 10px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-            width: 100%;
-            height: auto;
-        }
+    .mountain-image {
+      border-radius: 10px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+      width: 100%;
+      height: auto;
+    }
 
-        .mountain-image:hover {
-            transform: translateY(-5px);
-        }
+    .mountain-image:hover {
+      transform: translateY(-5px);
+    }
 
+    /* Property Section section */
+    .attraction-section {
+      padding: 80px 0;
+      background-color: var(--dark-bg);
+    }
 
-/* Property Section section */
-.attraction-section {
-    padding: 80px 0;
-    background-color: #ffffff;
-}
+    .attraction-section .section-title {
+      color: var(--text-white);
+    }
 
-.attraction-card {
-    position: relative;
-    height: 400px;
-    border-radius: 8px;
-    overflow: hidden;
-    cursor: pointer;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .attraction-card {
+      position: relative;
+      height: 400px;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.attraction-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
+    .attraction-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
 
-.card-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
+    .card-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
 
-.card-background img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-    filter: grayscale(30%); /* Apply grayscale filter for theme consistency */
-}
+    .card-background img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      filter: grayscale(30%); /* Apply grayscale filter for theme consistency */
+    }
 
-.attraction-card:hover .card-background img {
-    transform: scale(1.05);
-    filter: grayscale(0%);
-}
+    .attraction-card:hover .card-background img {
+      transform: scale(1.05);
+      filter: grayscale(0%);
+    }
 
-.card-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    transition: background 0.3s ease;
-    z-index: 2;
-}
+    .card-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      transition: background 0.3s ease;
+      z-index: 2;
+    }
 
-.attraction-card:hover .card-overlay {
-    background: rgba(0, 0, 0, 0.6);
-}
+    .attraction-card:hover .card-overlay {
+      background: rgba(0, 0, 0, 0.6);
+    }
 
-.design-card-content {
-    position: absolute;
-    bottom: 30px;
-    left: 30px;
-    color: white;
-    transition: opacity 0.4s ease;
-    z-index: 5;
-    padding: 12px 20px;
-    border-radius: 8px;
-}
+    .design-card-content {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      color: white;
+      transition: opacity 0.4s ease;
+      z-index: 5;
+      padding: 12px 20px;
+      border-radius: 8px;
+    }
 
-.design-card-content h3 {
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 0;
-    color: white;
-}
+    .design-card-content h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0;
+      color: white;
+    }
 
-.attraction-card:hover .design-card-content {
-    opacity: 0;
-}
+    .attraction-card:hover .design-card-content {
+      opacity: 0;
+    }
 
-.card-content {
-    position: absolute;
-    bottom: 20%;
-    left:10%;
-    right: 0;
-    padding: 40px 30px;
-    color: white;
-    transform: translateY(20px);
-    opacity: 0;
-    transition: all 0.5s ease;
-    z-index: 5;
-}
+    .card-content {
+      position: absolute;
+      bottom: 20%;
+      left: 10%;
+      right: 0;
+      padding: 40px 30px;
+      color: white;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.5s ease;
+      z-index: 5;
+    }
 
-.attraction-card:hover .card-content {
-    transform: translateY(0);
-    opacity: 1;
-}
+    .attraction-card:hover .card-content {
+      transform: translateY(0);
+      opacity: 1;
+    }
 
-.card-title {
-    font-size: 2rem;
-    font-weight: 500;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-}
+    .card-title {
+      font-size: 2rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
 
-.card-subtitle {
-    font-size: 1rem;
-    font-weight: 300;
-    margin-bottom: 20px;
-    opacity: 0.9;
-}
+    .card-subtitle {
+      font-size: 1rem;
+      font-weight: 300;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
 
-.explore-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: transparent;
-    border: none;
-    color: white;
-    padding: 12px 25px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
+    .explore-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      border: none;
+      color: white;
+      padding: 12px 25px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
 
-.explore-btn:hover {
-    color: #ffffff;
-    transform: translateX(5px);
-}
+    .explore-btn:hover {
+      color: #ffffff;
+      transform: translateX(5px);
+    }
 
-.explore-btn i {
-    transition: transform 0.3s ease;
-}
+    .explore-btn i {
+      transition: transform 0.3s ease;
+    }
 
-.explore-btn:hover i {
-    transform: translateX(3px);
-}
+    .explore-btn:hover i {
+      transform: translateX(3px);
+    }
 
-.container-fluid {
-    width: 95%;
-}
+    .container-fluid {
+      width: 95%;
+    }
 
-/* Featured properties */
-.properties-section {
-    padding-bottom: 100px;
-    margin-top: 100px;
-    background: var(--background-light);
-}
+    /* Featured properties */
+    .properties-section {
+      padding-bottom: 100px;
+      margin-top: 100px;
+      background: #1e1e1e;
+    }
 
-/* Initial state for animation */
-.property-card {
-    /* opacity: 0; */
-    transform: translateY(2px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
+    .properties-section .section-title {
+      color: var(--text-light);
+    }
 
-.section-header {
-    margin-bottom: 60px;
-    text-align: center;
-}
+    .properties-section .section-subtitle {
+      color: var(--text-light-bg);
+    }
 
-.section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    color: var(--text-dark);
-    font-weight: 400;
-    margin-bottom: 8px;
-}
+    /* Initial state for animation */
+    .property-card {
+      /* opacity: 0; */
+      transform: translateY(2px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
 
-.section-subtitle {
-    color: var(--grey-dark);
-    font-size: 1rem;
-    max-width: 70%;
-    margin: 0 auto;
-}
+    .section-header {
+      margin-bottom: 60px;
+      text-align: center;
+    }
 
-.property-card {
-    background: var(--text-light);
-    border-radius: 12px;
-    overflow: hidden;
-    height: 100%;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    position: relative;
-}
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      color: var(--text-dark);
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
 
-.property-image {
-    height: 375px;
-    position: relative;
-    overflow: hidden;
-}
+    .section-subtitle {
+      color: var(--grey-dark);
+      font-size: 1rem;
+      max-width: 70%;
+      margin: 0 auto;
+    }
 
-.property-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+    .property-card {
+      background: var(--text-light);
+      border-radius: 12px;
+      overflow: hidden;
+      height: 100%;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
 
-.property-content {
-    padding: 20px;
-    position: relative;
-}
+    .property-image {
+      height: 375px;
+      position: relative;
+      overflow: hidden;
+    }
 
-.property-title {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--text-dark);
-    margin-bottom: 12px;
-    line-height: 1.3;
-}
+    .property-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-.property-description {
-    color: var(--grey-dark);
-    margin-bottom: 10px;
-    line-height: 1.6;
-    font-size: 0.95rem;
-}
+    .property-content {
+      padding: 20px;
+      position: relative;
+    }
 
-.property-price {
-    font-weight: 600;
-    color: var(--text-dark);
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-}
+    .property-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
 
-.property-details {
-    display: flex;
-    gap: 20px;
-    color: #666;
-    font-size: 0.9rem;
-    justify-content: space-between;
-}
+    .property-description {
+      color: var(--grey-dark);
+      margin-bottom: 10px;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
 
-.property-detail {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
- /* Description Section */
-      .attractions {
-        padding: 6rem 0;
-        background: #f8f9fa;
-      }
+    .property-price {
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
 
-      .attractions-subtitle {
-        text-align: center;
-        font-size: 0.9rem;
-        /* color: #ff7043; */
-        letter-spacing: 2px;
-        margin-bottom: 1rem;
-        font-weight: 600;
-      }
+    .property-details {
+      display: flex;
+      gap: 20px;
+      color: #666;
+      font-size: 0.9rem;
+      justify-content: space-between;
+    }
 
-      .attractions-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1.5rem;
-        margin-top: 4rem;
-      }
+    .property-detail {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    /* Description Section */
+    .attractions {
+      padding: 6rem 0;
+      background: #1e1e1e;
+    }
 
-      .attraction-card {
-        height: 450px;
-        border-radius: 20px;
-        overflow: hidden;
-        position: relative;
-        cursor: pointer;
-        transition: all 0.3s;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      }
+    .attractions-subtitle {
+      text-align: center;
+      font-size: 0.9rem;
+      /* color: #ff7043; */
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
 
-       .attraction-card:hover {
+    .attractions-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .attraction-card {
+      height: 450px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .attraction-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     }
@@ -533,312 +754,815 @@
       transform: scale(1.05);
     }
 
-      .attraction-card.dining {
-        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
-          url("Side-view-aerial-look-at-dock-scaled.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+    .attraction-card.dining {
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+        url("Side-view-aerial-look-at-dock-scaled.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .attraction-card.places {
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+        url("Side-view-aerial-look-at-dock-scaled.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .attraction-card.activities {
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+        url("Side-view-aerial-look-at-dock-scaled.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .attraction-card.shopping {
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+        url("Side-view-aerial-look-at-dock-scaled.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .attraction-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), transparent);
+      padding: 2rem 2rem 3rem;
+      color: white;
+      z-index: 2;
+    }
+
+    .attraction-card h3 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 0;
+      position: absolute;
+      top: 25px;
+      left: 30px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Reviews Section Styles */
+    .reviews-section {
+      background-color: var(--dark-bg);
+      padding: 80px 0;
+      position: relative;
+    }
+
+    .reviews-section .section-title {
+      color: var(--text-white);
+    }
+
+    .reviews-section .section-subtitle {
+      color: var(--text-light-bg);
+    }
+
+    .reviews-swiper {
+      padding: 30px 50px;
+      margin: 0 auto;
+    }
+
+    .review-card {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 30px;
+      height: 100%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .review-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    .review-header {
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 15px;
+    }
+
+    .review-header h3 {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+      color: var(--text-white);
+      font-weight: 400;
+    }
+
+    .guest-title {
+      color: var(--text-light-bg);
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+
+    .review-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .review-quote {
+      position: relative;
+      padding-left: 15px;
+      margin-bottom: 20px;
+    }
+
+    .quote-icon {
+      color: var(--accent-color);
+      position: absolute;
+      left: -10px;
+      top: -10px;
+      font-size: 1.8rem;
+      opacity: 0.7;
+    }
+
+    .review-quote p {
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--text-light-bg);
+      font-size: 1rem;
+      font-family: var(--body-font);
+    }
+
+    .review-rating {
+      color: var(--accent-color);
+      font-size: 1.1rem;
+      margin-top: auto;
+    }
+
+    /* Swiper Navigation Styles */
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: var(--accent-color);
+      background: rgba(255, 255, 255, 0.5);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+      background: var(--accent-color);
+      color: var(--text-white);
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .swiper-pagination-bullet {
+      background: var(--accent-color);
+      opacity: 0.5;
+    }
+
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+      background: var(--accent-color);
+    } /* Media queries for responsive design */
+    @media (max-width: 768px) {
+      .reviews-swiper {
+        padding: 20px 30px;
       }
 
-      .attraction-card.places {
-        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
-          url("Side-view-aerial-look-at-dock-scaled.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+      .review-card {
+        padding: 20px;
       }
 
-      .attraction-card.activities {
-        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
-          url("Side-view-aerial-look-at-dock-scaled.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+      .swiper-button-next,
+      .swiper-button-prev {
+        width: 36px;
+        height: 36px;
       }
 
-      .attraction-card.shopping {
-        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
-          url("Side-view-aerial-look-at-dock-scaled.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+      .swiper-button-next:after,
+      .swiper-button-prev:after {
+        font-size: 14px;
       }
-
-      .attraction-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(rgba(0, 0, 0, 0.7), transparent);
-        padding: 2rem 2rem 3rem;
-        color: white;
-        z-index: 2;
-      }
-
-      .attraction-card h3 {
-        font-size: 1.8rem;
-        font-weight: 600;
-        margin: 0;
-        position: absolute;
-        top: 25px;
-        left: 30px;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-      }
-
-</style>
-<body>
-        <!-- Include Header -->
+    }
+  </style>
+  <body>
+    <!-- Include Header -->
     <div id="header-placeholder"></div>
 
-    <section class="hero-section">
-    <div class="banner-overlay"></div>
-	<div class="container">
-		<div class="banner-content">
-			<h1 class="display-3 fw-bold">Experience Paradise in Hawaii</h1>
-			<p class="lead text-center pb-3 text-white" style="max-width: 800px; margin: 0 auto;">
-                Discover the beauty of Oahu with our premium vacation properties, car rentals, and curated island attractions
-			</p>
-			<a href="/WhatsApp Image 2025-08-07 at 7.39.57 PM.jpeg " class="btn main-btn btn-lg px-5 py-3 mt-3">Explore Properties</a>
-		</div>
-	</div>
-  
+    <section class="hero-section d-flex align-items-center">
+      <div class="banner-overlay"></div>
+      <div class="container h-100 d-flex flex-column justify-content-center">
+        <div class="banner-content">
+          <h1 class="display-3 fw-bold">Experience Paradise in Hawaii</h1>
+          <p
+            class="lead text-center pb-3 text-white"
+            style="max-width: 800px; margin: 0 auto"
+          >
+            Discover the beauty of Oahu with our premium vacation properties,
+            car rentals, and curated island attractions
+          </p>
+          <a
+            href="/properties"
+            class="btn btn-lg px-5 py-3 mt-3"
+            style="
+              background-color: var(--accent-color);
+              color: var(--text-white);
+              font-family: var(--body-font);
+              font-weight: 600;
+              border-radius: 0;
+            "
+            >Explore Properties</a
+          >
+        </div>
+        <div class="search-container mx-auto">
+          <form class="search-bar">
+            <div class="search-group">
+              <div class="search-input-wrap">
+                <span class="search-icon">
+                  <span
+                    class="iconify"
+                    data-icon="mdi:calendar-month-outline"
+                  ></span>
+                </span>
+                <select class="search-select">
+                  <option selected>CHECK IN</option>
+                  <option value="1">September 16, 2025</option>
+                  <option value="2">September 17, 2025</option>
+                  <option value="3">September 18, 2025</option>
+                </select>
+              </div>
+            </div>
+            <div class="search-divider"></div>
+            <div class="search-group">
+              <div class="search-input-wrap">
+                <span class="search-icon">
+                  <span
+                    class="iconify"
+                    data-icon="mdi:calendar-month-outline"
+                  ></span>
+                </span>
+                <select class="search-select">
+                  <option selected>CHECK OUT</option>
+                  <option value="1">September 20, 2025</option>
+                  <option value="2">September 21, 2025</option>
+                  <option value="3">September 22, 2025</option>
+                </select>
+              </div>
+            </div>
+            <div class="search-divider"></div>
+            <div class="search-group">
+              <div class="search-input-wrap">
+                <span class="search-icon">
+                  <span class="iconify" data-icon="mdi:bed-outline"></span>
+                </span>
+                <select class="search-select">
+                  <option selected>GUESTS</option>
+                  <option value="1">1-2 Guests</option>
+                  <option value="2">3-4 Guests</option>
+                  <option value="3">5-6 Guests</option>
+                  <option value="4">7+ Guests</option>
+                </select>
+              </div>
+            </div>
+            <div class="search-group">
+              <button type="submit" class="search-button">
+                <span class="iconify" data-icon="mdi:magnify"></span> SEARCH
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- Main Content -->
 
-</section>
-<!-- Main Content -->
-    
     <section class="about-section py-5 i-content" role="main" aria-label="Main">
-       <!-- About Section / Elite Services -->
-        <div class="i-welcome">
-            <div class="container">
-                <div class="row welcome-row position-relative">
-                    <div class="welcome-col col-12 col-lg-6 order-lg-2 d-flex align-items-center" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                        <div class="welcome-content text-center">
-                            <h1 class="black about-title">ELITE SERVICES:<br>
-                                <span style="display: inline-block; background-color: var(--sunset-gold); padding: 0 15px; font-weight: 700;">LUXURIOUS</span> TAMARINDO VACATION<br>RENTALS LIKE NO OTHER
-                            </h1>
-                            <div class="about-underline mx-auto" style="margin: 20px auto; background: var(--sunset-gold);"></div>
-                            <div class="content-builder-wrap">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="about-text">
-                                           Experience the joys of recharging in nature without compromising any comfort. The Manor House features outdoor dinning, outdoor lounge chairs, kayaks, private beach, private dock and also beautiful large verandas that wrap around this Manor Hous
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="mt-4" style="text-align: center;">
-                                            <a href="/WhatsApp Image 2025-08-07 at 7.39.57 PM.jpeg" class="btn main-btn btn-lg px-5 py-3 mt-3">View Our Elite Villas</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+      <!-- About Section / Elite Services -->
+      <div class="i-welcome">
+        <div class="container">
+          <div class="row welcome-row position-relative">
+            <div
+              class="welcome-col col-12 col-lg-6 order-lg-2 d-flex align-items-center"
+              data-aos="fade-left"
+              data-aos-duration="1000"
+              data-aos-delay="200"
+            >
+              <div class="welcome-content text-center">
+                <h1 class="black about-title">
+                  ELITE SERVICES:<br />
+                  <span
+                    style="
+                      display: inline-block;
+                      background-color: var(--accent-color);
+                      padding: 0 15px;
+                      font-weight: 700;
+                    "
+                    >LUXURIOUS</span
+                  >
+                  TAMARINDO VACATION<br />RENTALS LIKE NO OTHER
+                </h1>
+                <div
+                  class="about-underline mx-auto"
+                  style="margin: 20px auto; background: var(--accent-color)"
+                ></div>
+                <div class="content-builder-wrap">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="about-text">
+                        Immerse yourself in the breathtaking ambiance of the
+                        beautiful swimming pool, just steps away from the
+                        pristine beach. Indulge in the convenience of a BYOB bar
+                        and a full bathroom in the bohio, creating an idyllic
+                        setting for relaxation. Enhance your seaside experience
+                        with an outdoor shower, allowing you to wash off the
+                        sand after a day of sun-soaked adventures. Welcome to
+                        your coastal haven where tranquility meets opulence.
                       </div>
-                      <div class="about-separator" style="  width: 1px; background-color: #808080; transform: translateX(-50%); z-index: 10;"></div>
-                    <div class="welcome-col col-12 col-lg-6 order-lg-1 d-flex align-items-center" data-aos="fade-right" data-aos-duration="1000">
-                        <div class="welcome-img-wrap">
-                            <img src="/WhatsApp Image 2025-08-07 at 7.39.57 PM.jpeg" class="welcome-img" width="800" height="800" alt="Elite Services Image" style="width: 100%; height: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        </div>
                     </div>
-                    <!-- Vertical separator -->
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="mt-4" style="text-align: center">
+                        <a
+                          href="/about"
+                          class="btn btn-lg px-5 py-3 mt-3"
+                          style="
+                            background-color: var(--accent-color);
+                            color: var(--text-white);
+                            font-family: var(--body-font);
+                            font-weight: 600;
+                            border-radius: 0;
+                          "
+                          >View Our Elite Villas</a
+                        >
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
+            <div
+              class="d-flex"
+              style="
+                height: 800px;
+                position: absolute;
+                left: 45%;
+                top: 10%;
+                bottom: 10%;
+              "
+            >
+              <div class="vr"></div>
+            </div>
+            <div
+              class="welcome-col col-12 col-lg-6 order-lg-1 d-flex align-items-center"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+            >
+              <div class="welcome-img-wrap">
+                <img
+                  src="/WhatsApp Image 2025-08-07 at 7.39.57 PM.jpeg"
+                  class="welcome-img"
+                  width="600"
+                  height="700"
+                  alt="Elite Services Image"
+                  style="
+                    width: 90%;
+                    height: auto;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                  "
+                />
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-      <!-- Property Section -->
-   <section class="attraction-section">
-        <div class="container">
-            <h2 class="section-title py-4">Explore the Best of Bentonville</h2>
-            
-            <div class="row g-4">
-                <!-- Hot Tub Getaways -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="attraction-card hot-tub-card" data-aos="fade-up">
-                        <div class="card-background">
-                            <img src="/WhatsApp Image 2025-08-07 at 7.39.57 PM.jpeg" alt="Eat & Drink in Bentonville">
-                        </div>
-                        <div class="card-overlay"></div>
-                        <div class="design-card-content">
-                            <h3>Eat & Drink</h3>
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">Dine & Unwind</h3>
-                            <p class="card-subtitle">Experience Bentonville’s finest bites and sips.</p>
-                            <button class="explore-btn">
-                                Explore <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+    <!-- Property Section -->
+    <section class="attraction-section">
+      <div class="container">
+        <h2 class="section-title py-4">Explore the Best of Bentonville</h2>
 
-                <!-- Family Friendly -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="attraction-card hot-tub-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card-background">
-                            <img src="/WhatsApp Image 2025-08-07 at 7.39.57 PM.jpeg" alt="Local Events & Attractions">
-                        </div>
-                        <div class="card-overlay"></div>
-                        <div class="design-card-content">
-                            <h3>Local Events & Attractions</h3>
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">Happenings & Highlights</h3>
-                            <p class="card-subtitle"> Uncover events that make Bentonville shine.</p>
-                            <button class="explore-btn">
-                                Explore <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Poolside Retreats -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="attraction-card hot-tub-card" data-aos="fade-up" data-aos-delay="400">
-                        <div class="card-background">
-                            <img src="/WhatsApp Image 2025-08-07 at 7.39.57 PM.jpeg" alt="Outdoor Adventures">
-                        </div>
-                        <div class="card-overlay"></div>
-                        <div class="design-card-content">
-                            <h3>Outdoor Adventures</h3>
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">Adventure Awaits</h3>
-                            <p class="card-subtitle">Ride, hike, and roam through Ozark beauty.</p>
-                            <button class="explore-btn">
-                                Explore <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-3">
-    <button class="btn btn-outline-secondary py-3 px-4">
-        View All Attractions <i class="fas fa-arrow-right"></i>
-    </button>
-</div>
-        </div>
-    </section>
-
-     <!-- Featured properties -->
-    <section class="properties-section" id="properties">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Featured Properties</h2>
-                <p class="section-subtitle">Where you stay matters; enjoy our hand-picked selection of places to stay in and around Bentonville, AR,</p>
-
-  <p class="section-subtitle"> that gives you access to world-class Mountain Biking, incredible dining, small-town charm, and more! From luxury to affordability find your base camp in Northwest Arkansas today!</p>
-            </div>
-            <div class="row">
-               <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="property-card">
-                        <div class="property-image">
-                            <img src="/WhatsApp Image 2025-08-07 at 7.39.57 PM.jpeg" alt="The Guesthouse">
-                        </div>
-                        <div class="property-content">
-                            <h3 class="property-title">The Guesthouse</h3>
-                            <div class="property-details">
-                                <div class="property-detail">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <span>Bentonville, Arkansas</span>
-                                </div>
-                            </div>
-                            <div class="property-details mt-3" style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 15px;">
-                                <div class="property-detail">
-                                    <i class="fas fa-users"></i>
-                                    <span>6 guests</span>
-                                </div>
-                                <div class="property-detail">
-                                    <i class="fas fa-bed"></i>
-                                    <span>3 beds</span>
-                                </div>
-                                <div class="property-detail">
-                                    <i class="fas fa-bath"></i>
-                                    <span>2 baths</span>
-                                </div>
-                            </div>
-                            <!-- <a href="#" class="view-property-btn">View Details <i class="fas fa-arrow-right ms-1"></i></a> -->
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="property-card">
-                        <div class="property-image">
-                            <img src="/WhatsApp Image 2025-08-07 at 7.39.57 PM.jpeg" alt="Eclectic Retreat">
-                        </div>
-                        <div class="property-content">
-                            <h3 class="property-title">Eclectic Retreat</h3>
-                            <div class="property-details">
-                                <div class="property-detail">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <span>Bentonville, Arkansas</span>
-                                </div>
-                            </div>
-                            <div class="property-details mt-3" style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 15px;">
-                                <div class="property-detail">
-                                    <i class="fas fa-users"></i>
-                                    <span>6 guests</span>
-                                </div>
-                                <div class="property-detail">
-                                    <i class="fas fa-bed"></i>
-                                    <span>3 beds</span>
-                                </div>
-                                <div class="property-detail">
-                                    <i class="fas fa-bath"></i>
-                                    <span>2 baths</span>
-                                </div>
-                            </div>
-                            <!-- <a href="#" class="view-property-btn">View Details <i class="fas fa-arrow-right ms-1"></i></a> -->
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="property-card">
-                        <div class="property-image">
-                            <img src="/WhatsApp Image 2025-08-07 at 7.39.57 PM.jpeg" alt="7th St. Trailhead">
-                        </div>
-                        <div class="property-content">
-                            <h3 class="property-title">7th St. Trailhead</h3>
-                            <div class="property-details">
-                                <div class="property-detail">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <span>Bentonville, Arkansas</span>
-                                </div>
-                            </div>
-                            <div class="property-details mt-3" style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 15px;">
-                                <div class="property-detail">
-                                    <i class="fas fa-users"></i>
-                                    <span>6 guests</span>
-                                </div>
-                                <div class="property-detail">
-                                    <i class="fas fa-bed"></i>
-                                    <span>3 beds</span>
-                                </div>
-                                <div class="property-detail">
-                                    <i class="fas fa-bath"></i>
-                                    <span>1.5 baths</span>
-                                </div>
-                            </div>
-                            <!-- <a href="#" class="view-property-btn">View Details <i class="fas fa-arrow-right ms-1"></i></a> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-5">
-                <button class="btn btn-outline-dark py-3 px-4">
-                    View All Properties <i class="fas fa-arrow-right ms-2"></i>
+        <div class="row g-4">
+          <!-- Hot Tub Getaways -->
+          <div class="col-lg-4 col-md-6">
+            <div class="attraction-card hot-tub-card" data-aos="fade-up">
+              <div class="card-background">
+                <img
+                  src="/WhatsApp Image 2025-08-07 at 7.39.57 PM.jpeg"
+                  alt="Eat & Drink in Bentonville"
+                />
+              </div>
+              <div class="card-overlay"></div>
+              <div class="design-card-content">
+                <h3>Eat & Drink</h3>
+              </div>
+              <div class="card-content">
+                <h3 class="card-title">Dine & Unwind</h3>
+                <!-- <p class="card-subtitle">
+                  Experience Bentonville’s finest bites and sips.
+                </p> -->
+                <button class="explore-btn">
+                  Explore <i class="fas fa-arrow-right"></i>
                 </button>
+              </div>
             </div>
+          </div>
+
+          <!-- Family Friendly -->
+          <div class="col-lg-4 col-md-6">
+            <div
+              class="attraction-card hot-tub-card"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="card-background">
+                <img
+                  src="/WhatsApp Image 2025-08-07 at 7.39.57 PM.jpeg"
+                  alt="Local Events & Attractions"
+                />
+              </div>
+              <div class="card-overlay"></div>
+              <div class="design-card-content">
+                <h3>Local Events & Attractions</h3>
+              </div>
+              <div class="card-content">
+                <h3 class="card-title">Happeningss</h3>
+                <!-- <p class="card-subtitle">
+                  Uncover events that make Bentonville shine.
+                </p> -->
+                <button class="explore-btn">
+                  Explore <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Poolside Retreats -->
+          <div class="col-lg-4 col-md-6">
+            <div
+              class="attraction-card hot-tub-card"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <div class="card-background">
+                <img
+                  src="/WhatsApp Image 2025-08-07 at 7.39.57 PM.jpeg"
+                  alt="Outdoor Adventures"
+                />
+              </div>
+              <div class="card-overlay"></div>
+              <div class="design-card-content">
+                <h3>Outdoor Adventures</h3>
+              </div>
+              <div class="card-content">
+                <h3 class="card-title">Adventure Awaits</h3>
+                <!-- <p class="card-subtitle">
+                  Ride, hike, and roam through Ozark beauty.
+                </p> -->
+                <button class="explore-btn">
+                  Explore <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
+        <div class="text-center mt-3">
+          <button
+            class="btn py-3 px-4"
+            style="
+              background-color: var(--accent-color);
+              color: var(--text-white);
+            "
+          >
+            View All Attractions <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
     </section>
-        <!-- Description Section -->
+
+    <!-- Featured properties -->
+    <section class="properties-section" id="properties">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Featured Properties</h2>
+          <p class="section-subtitle">
+            Where you stay matters; enjoy our hand-picked selection of places to
+            stay in and around Bentonville, AR,
+          </p>
+
+          <p class="section-subtitle">
+            that gives you access to world-class Mountain Biking, incredible
+            dining, small-town charm, and more! From luxury to affordability
+            find your base camp in Northwest Arkansas today!
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="property-card">
+              <div class="property-image">
+                <img
+                  src="/WhatsApp Image 2025-08-07 at 7.39.57 PM.jpeg"
+                  alt="The Guesthouse"
+                />
+              </div>
+              <div class="property-content">
+                <h3 class="property-title">The Guesthouse</h3>
+                <div class="property-details">
+                  <div class="property-detail">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Bentonville, Arkansas</span>
+                  </div>
+                </div>
+                <div
+                  class="property-details mt-3"
+                  style="
+                    border-top: 1px solid rgba(0, 0, 0, 0.1);
+                    padding-top: 15px;
+                  "
+                >
+                  <div class="property-detail">
+                    <i class="fas fa-users"></i>
+                    <span>6 guests</span>
+                  </div>
+                  <div class="property-detail">
+                    <i class="fas fa-bed"></i>
+                    <span>3 beds</span>
+                  </div>
+                  <div class="property-detail">
+                    <i class="fas fa-bath"></i>
+                    <span>2 baths</span>
+                  </div>
+                </div>
+                <!-- <a href="#" class="view-property-btn">View Details <i class="fas fa-arrow-right ms-1"></i></a> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="property-card">
+              <div class="property-image">
+                <img
+                  src="/WhatsApp Image 2025-08-07 at 7.39.57 PM.jpeg"
+                  alt="Eclectic Retreat"
+                />
+              </div>
+              <div class="property-content">
+                <h3 class="property-title">Eclectic Retreat</h3>
+                <div class="property-details">
+                  <div class="property-detail">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Bentonville, Arkansas</span>
+                  </div>
+                </div>
+                <div
+                  class="property-details mt-3"
+                  style="
+                    border-top: 1px solid rgba(0, 0, 0, 0.1);
+                    padding-top: 15px;
+                  "
+                >
+                  <div class="property-detail">
+                    <i class="fas fa-users"></i>
+                    <span>6 guests</span>
+                  </div>
+                  <div class="property-detail">
+                    <i class="fas fa-bed"></i>
+                    <span>3 beds</span>
+                  </div>
+                  <div class="property-detail">
+                    <i class="fas fa-bath"></i>
+                    <span>2 baths</span>
+                  </div>
+                </div>
+                <!-- <a href="#" class="view-property-btn">View Details <i class="fas fa-arrow-right ms-1"></i></a> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="property-card">
+              <div class="property-image">
+                <img
+                  src="/WhatsApp Image 2025-08-07 at 7.39.57 PM.jpeg"
+                  alt="7th St. Trailhead"
+                />
+              </div>
+              <div class="property-content">
+                <h3 class="property-title">7th St. Trailhead</h3>
+                <div class="property-details">
+                  <div class="property-detail">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Bentonville, Arkansas</span>
+                  </div>
+                </div>
+                <div
+                  class="property-details mt-3"
+                  style="
+                    border-top: 1px solid rgba(0, 0, 0, 0.1);
+                    padding-top: 15px;
+                  "
+                >
+                  <div class="property-detail">
+                    <i class="fas fa-users"></i>
+                    <span>6 guests</span>
+                  </div>
+                  <div class="property-detail">
+                    <i class="fas fa-bed"></i>
+                    <span>3 beds</span>
+                  </div>
+                  <div class="property-detail">
+                    <i class="fas fa-bath"></i>
+                    <span>1.5 baths</span>
+                  </div>
+                </div>
+                <!-- <a href="#" class="view-property-btn">View Details <i class="fas fa-arrow-right ms-1"></i></a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-5">
+          <button
+            class="btn py-3 px-4"
+            style="
+              background-color: var(--accent-color);
+              color: var(--text-white);
+            "
+          >
+            View All Properties <i class="fas fa-arrow-right ms-2"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section py-5">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">What Our Guests Say</h2>
+          <p class="section-subtitle">
+            Read testimonials from guests who've experienced our properties
+          </p>
+        </div>
+
+        <!-- Swiper container -->
+        <div class="swiper reviews-swiper mt-4">
+          <div class="swiper-wrapper">
+            <!-- Review Card 1 -->
+            <div class="swiper-slide">
+              <div class="review-card">
+                <div class="review-header">
+                  <h3>Casey F</h3>
+                  <p class="guest-title">Guest</p>
+                </div>
+                <div class="review-content">
+                  <div class="review-quote">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p>
+                      What a great house for a trip away!! The walk to the beach
+                      was short and the private beach access was clutch. The
+                      house is set up so great and the attention to detail with
+                      the aesthetic was lovely. There was ample kitchen supplies
+                      which we feel like is such an important quality in a
+                      rental house. And Jeramy was so responsive and helpful!!!
+                    </p>
+                  </div>
+                  <div class="review-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review Card 2 -->
+            <div class="swiper-slide">
+              <div class="review-card">
+                <div class="review-header">
+                  <h3>Sterling B</h3>
+                  <p class="guest-title">Guest</p>
+                </div>
+                <div class="review-content">
+                  <div class="review-quote">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p>
+                      This is by far one of the best vacation rentals I have
+                      ever stayed in. This house was immaculate and well
+                      stocked. The walk to the beach was a breeze and the
+                      Waterhouse bar at the front of the neighborhood was the
+                      perfect addition. Truly couldn't have asked for a better
+                      place to stay! Jeramy was extremely responsive and
+                      communicative from booking to checkout. I would most
+                      definitely stay here again.
+                    </p>
+                  </div>
+                  <div class="review-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review Card 3 -->
+            <div class="swiper-slide">
+              <div class="review-card">
+                <div class="review-header">
+                  <h3>Kristi D</h3>
+                  <p class="guest-title">Guest</p>
+                </div>
+                <div class="review-content">
+                  <div class="review-quote">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p>
+                      We loved A Wave From It All! My family enjoyed our first
+                      trip to 30-A and enjoyed staying in this beautiful beach
+                      house! We would highly recommend it!
+                    </p>
+                  </div>
+                  <div class="review-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="review-card">
+                <div class="review-header">
+                  <h3>Kristi D</h3>
+                  <p class="guest-title">Guest</p>
+                </div>
+                <div class="review-content">
+                  <div class="review-quote">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p>
+                      We loved A Wave From It All! My family enjoyed our first
+                      trip to 30-A and enjoyed staying in this beautiful beach
+                      house! We would highly recommend it!
+                    </p>
+                  </div>
+                  <div class="review-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="review-card">
+                <div class="review-header">
+                  <h3>Kristi D</h3>
+                  <p class="guest-title">Guest</p>
+                </div>
+                <div class="review-content">
+                  <div class="review-quote">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p>
+                      We loved A Wave From It All! My family enjoyed our first
+                      trip to 30-A and enjoyed staying in this beautiful beach
+                      house! We would highly recommend it!
+                    </p>
+                  </div>
+                  <div class="review-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Swiper navigation -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+
+          <!-- Swiper pagination -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Description Section -->
     <section class="attractions">
       <div class="container">
-       
-
         <div class="attractions-grid">
           <div class="attraction-card">
             <img
@@ -920,20 +1644,55 @@
     </section>
     <div id="footer-placeholder"></div>
     <script>
-        // Load header and footer
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch('header.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('header-placeholder').innerHTML = data;
-                });
+      // Load header and footer
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("header.html")
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById("header-placeholder").innerHTML = data;
+          });
 
-            fetch('footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('footer-placeholder').innerHTML = data;
-                });
+        fetch("footer.html")
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById("footer-placeholder").innerHTML = data;
+          });
+
+        // Initialize Swiper for reviews
+        const reviewsSwiper = new Swiper(".reviews-swiper", {
+          slidesPerView: 1,
+          spaceBetween: 30,
+          loop: true,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+          },
+          breakpoints: {
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 30,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+          },
         });
+      });
     </script>
-</body>
+    <!-- Include Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  </body>
 </html>
