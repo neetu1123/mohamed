@@ -323,11 +323,13 @@ ul {
         background-color: rgba(255, 255, 255, 0.1);
         color: var(--text-white);
       }
-
+   .newsletter-form1 input::placeholder {
+  color: white;
+}
       .form-input:focus {
         border-color: var(--sunset-gold);
       }
-
+       
       .subscribe-btn {
         background-color: var(--dark-bg);
         color: var(--sunset-gold);
