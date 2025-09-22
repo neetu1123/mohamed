@@ -133,7 +133,7 @@ ul {
 }
 
 .logo img {
-  filter: brightness(0) invert(1); /* Makes the logo white */
+ 
   transition: all 0.3s ease;
 }
 
